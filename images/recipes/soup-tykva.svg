@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffcc80"/>
+      <stop offset="1" stop-color="#ff8f00"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g3)"/>
+  <g fill="#fff3e0" opacity="0.92">
+    <rect x="260" y="320" width="240" height="180" rx="24"/>
+    <rect x="300" y="360" width="160" height="100" rx="16" fill="#ffb74d"/>
+  </g>
+  <g fill="#4e342e" font-family="Segoe UI, Roboto, Ubuntu, Arial" text-anchor="middle">
+    <text x="820" y="390" font-size="72" font-weight="800" fill="#fff">Тыквенный суп</text>
+    <text x="820" y="450" font-size="26" fill="#fffde7">кокос, карри</text>
+  </g>
+</svg>

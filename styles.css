@@ -72,13 +72,17 @@ body {
   background: #1a202a;
 }
 
+.promo { padding: 0 clamp(16px, 4vw, 36px) 12px; }
 .promo-banner {
   display: block;
-  margin: 0 auto 12px auto;
-  max-width: 1000px;
+  margin: 0 auto;
+  max-width: 520px;
   border-radius: var(--radius);
   overflow: hidden;
+  border: 1px solid #243042;
+  box-shadow: var(--shadow);
 }
+.promo-banner.small { max-width: 420px; }
 .promo-banner img { width: 100%; display: block; }
 
 .hero {

@@ -5,7 +5,7 @@ const recipeCatalog = [
   {
     id: 'ovsyanoblini-banan',
     title: 'Овсяноблины с бананом',
-    cover: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/ovsyanoblini.svg',
     timeMinutes: 15,
     caloriesPerServing: 320,
     difficulty: 'легко',
@@ -34,7 +34,7 @@ const recipeCatalog = [
   {
     id: 'kinoa-bowl-losos',
     title: 'Боул с киноа и лососем',
-    cover: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/kinoa-bowl.svg',
     timeMinutes: 25,
     caloriesPerServing: 520,
     difficulty: 'средне',
@@ -64,7 +64,7 @@ const recipeCatalog = [
   {
     id: 'sup-pyure-tykva-kokos',
     title: 'Тыквенный суп-пюре с кокосом',
-    cover: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/soup-tykva.svg',
     timeMinutes: 30,
     caloriesPerServing: 290,
     difficulty: 'легко',
@@ -91,7 +91,7 @@ const recipeCatalog = [
   {
     id: 'salat-hrust-kapusta-yabloko',
     title: 'Хрустящий салат: капуста, яблоко, орехи',
-    cover: 'https://images.unsplash.com/photo-1550251279-5d63a278f5a8?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/salad-hrust.svg',
     timeMinutes: 10,
     caloriesPerServing: 210,
     difficulty: 'легко',
@@ -117,7 +117,7 @@ const recipeCatalog = [
   {
     id: 'treska-parovaya-travy',
     title: 'Треска на пару с травами',
-    cover: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/treska-par.svg',
     timeMinutes: 20,
     caloriesPerServing: 240,
     difficulty: 'легко',
@@ -141,7 +141,7 @@ const recipeCatalog = [
   {
     id: 'humus-klassic',
     title: 'Хумус классический',
-    cover: 'https://images.unsplash.com/photo-1645126093771-9d258b74693c?q=80&w=1200&auto=format&fit=crop',
+    cover: 'images/recipes/hummus.svg',
     timeMinutes: 12,
     caloriesPerServing: 180,
     difficulty: 'легко',
@@ -404,10 +404,11 @@ function recipeCardTemplate(r) {
     ...r.diet,
     r.difficulty
   ].filter(Boolean);
+  const coverSrc = r.cover && typeof r.cover === 'string' ? r.cover : 'images/placeholder.svg';
   return `
     <article class="card" role="listitem">
       <div class="card-cover">
-        <img src="${r.cover}" alt="${r.title}" loading="lazy" />
+        <img src="${coverSrc}" alt="${r.title}" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';" />
       </div>
       <div class="card-body">
         <h3>${r.title}</h3>
