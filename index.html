@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ЗОЖ Кухня — Вкусные и полезные рецепты</title>
+    <meta name="description" content="ЗОЖ Кухня: полезные рецепты без сахара, быстрые и сбалансированные блюда, планировщик питания и список покупок. Никаких дат и счетчиков — только практическая польза.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="top-nav" aria-label="Главная навигация">
+        <a class="brand" href="#" aria-label="ЗОЖ Кухня — на главную">ЗОЖ Кухня</a>
+        <ul class="nav-links">
+          <li><a href="#recipes">Рецепты</a></li>
+          <li><a href="#filters">Фильтры</a></li>
+          <li><a href="#planner">Планировщик</a></li>
+          <li><a href="#shopping">Список покупок</a></li>
+          <li><a href="#guides">Гайды</a></li>
+        </ul>
+      </nav>
+
+      <a class="promo-banner" href="https://example.com" target="_blank" rel="noopener" aria-label="Промо-баннер">
+        <img src="images/alfaBanner(horizontal).jpg" alt="Полезное предложение для любителей здорового питания" />
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Поиск и навигация по рецептам">
+        <div class="hero-inner">
+          <h1>Готовим вкусно и полезно</h1>
+          <p class="subtitle">Подбор рецептов под ваши цели: быстро, сбалансировано и без лишнего сахара. Планируйте питание и формируйте список покупок в один клик.</p>
+          <div class="search-box">
+            <input id="searchInput" type="search" inputmode="search" autocomplete="off" placeholder="Поиск по названию, ингредиентам или тегам" aria-label="Поиск по рецептам" />
+            <button id="clearSearchBtn" class="secondary" type="button" aria-label="Очистить поиск">Очистить</button>
+          </div>
+          <div class="quick-chips" role="list" aria-label="Быстрые фильтры">
+            <button class="chip" data-chip="быстро" type="button">Быстро</button>
+            <button class="chip" data-chip="завтрак" type="button">Завтрак</button>
+            <button class="chip" data-chip="низкокалорийное" type="button">Низкокалорийное</button>
+            <button class="chip" data-chip="веган" type="button">Веган</button>
+            <button class="chip" data-chip="безглютеновое" type="button">Без глютена</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="filters" class="filters" aria-label="Фильтры рецептов">
+        <h2>Уточните подбор</h2>
+        <form id="filtersForm" class="filters-grid">
+          <fieldset>
+            <legend>Тип питания</legend>
+            <label><input type="checkbox" name="diet" value="веган"> Веган</label>
+            <label><input type="checkbox" name="diet" value="вегетарианская"> Вегетарианская</label>
+            <label><input type="checkbox" name="diet" value="безглютеновая"> Без глютена</label>
+            <label><input type="checkbox" name="diet" value="безлактозная"> Без лактозы</label>
+          </fieldset>
+          <fieldset>
+            <legend>Время, мин</legend>
+            <div class="range-group">
+              <input id="timeMin" type="range" min="5" max="120" value="10">
+              <output for="timeMin" id="timeMinOut">10</output>
+              <span>—</span>
+              <input id="timeMax" type="range" min="5" max="120" value="60">
+              <output for="timeMax" id="timeMaxOut">60</output>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Калорийность, ккал/порция</legend>
+            <div class="range-group">
+              <input id="calMin" type="range" min="50" max="1000" value="100">
+              <output for="calMin" id="calMinOut">100</output>
+              <span>—</span>
+              <input id="calMax" type="range" min="50" max="1000" value="700">
+              <output for="calMax" id="calMaxOut">700</output>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Сложность</legend>
+            <select id="difficultySelect" aria-label="Сложность">
+              <option value="">Любая</option>
+              <option value="легко">Легко</option>
+              <option value="средне">Средне</option>
+              <option value="сложно">Сложно</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Исключить аллергены</legend>
+            <label><input type="checkbox" name="allergen" value="глютен"> Глютен</label>
+            <label><input type="checkbox" name="allergen" value="молоко"> Молоко</label>
+            <label><input type="checkbox" name="allergen" value="яйцо"> Яйцо</label>
+            <label><input type="checkbox" name="allergen" value="орехи"> Орехи</label>
+            <label><input type="checkbox" name="allergen" value="рыба"> Рыба</label>
+          </fieldset>
+          <div class="filters-actions">
+            <button id="applyFiltersBtn" type="button">Применить</button>
+            <button id="resetFiltersBtn" class="secondary" type="button">Сбросить</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="recipes" class="recipes" aria-label="Список рецептов">
+        <h2>Подборка рецептов</h2>
+        <div id="recipesGrid" class="recipes-grid" role="list"></div>
+      </section>
+
+      <section id="planner" class="planner" aria-label="Планировщик питания">
+        <h2>Планировщик питания</h2>
+        <div class="planner-controls">
+          <label for="dayPicker">Добавить выбранный рецепт в день:</label>
+          <select id="dayPicker">
+            <option value="Понедельник">Понедельник</option>
+            <option value="Вторник">Вторник</option>
+            <option value="Среда">Среда</option>
+            <option value="Четверг">Четверг</option>
+            <option value="Пятница">Пятница</option>
+            <option value="Суббота">Суббота</option>
+            <option value="Воскресенье">Воскресенье</option>
+          </select>
+          <button id="clearPlannerBtn" class="secondary" type="button">Очистить план</button>
+        </div>
+        <div id="plannerGrid" class="planner-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="shopping" class="shopping" aria-label="Список покупок">
+        <h2>Список покупок</h2>
+        <div class="shopping-actions">
+          <button id="generateListBtn" type="button">Сформировать из плана</button>
+          <button id="copyListBtn" class="secondary" type="button">Скопировать</button>
+          <button id="exportListBtn" class="secondary" type="button">Экспорт TXT</button>
+          <button id="clearListBtn" class="secondary" type="button">Очистить список</button>
+        </div>
+        <div id="shoppingList" class="shopping-list" role="list"></div>
+      </section>
+
+      <section id="guides" class="guides" aria-label="Полезные материалы">
+        <h2>Полезные гайды и шпаргалки</h2>
+        <div class="guide">
+          <h3>Как собирать тарелку баланса</h3>
+          <ul>
+            <li><strong>1/2 тарелки</strong>: овощи и зелень (клетчатка, витамины).</li>
+            <li><strong>1/4 тарелки</strong>: белок (рыба, птица, бобовые, тофу).</li>
+            <li><strong>1/4 тарелки</strong>: сложные углеводы (крупы, цельнозерновые).</li>
+            <li><strong>Источник жиров</strong>: орехи, семена, оливковое масло.</li>
+          </ul>
+        </div>
+
+        <div class="guide">
+          <h3>Заготовки на неделю</h3>
+          <ul>
+            <li>Отварите крупы: <em>киноа, гречка, бурый рис</em> — хранить в холодильнике до 4 дней.</li>
+            <li>Запеките овощи на противне: брокколи, цветная капуста, морковь, перец.</li>
+            <li>Приготовьте базовые соусы: тахини, песто, йогуртовая заправка.</li>
+            <li>Заморозьте порции бульона для супов и рагу.</li>
+          </ul>
+        </div>
+
+        <div class="guide">
+          <h3>Замены ингредиентов</h3>
+          <ul>
+            <li>Пшеничную муку ➜ овсяная/рисовая для безглютеновых вариантов.</li>
+            <li>Сметану ➜ греческий йогурт 2–5%.</li>
+            <li>Сахар ➜ финики, спелый банан, стевия (по вкусу).</li>
+            <li>Майонез ➜ пюре авокадо + йогурт + лимон.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="recipeDialog" class="recipe-dialog" aria-label="Детали рецепта">
+      <form method="dialog">
+        <header class="dialog-header">
+          <h3 id="dialogTitle">Рецепт</h3>
+          <button id="closeDialogBtn" class="icon-btn" value="cancel" aria-label="Закрыть">✕</button>
+        </header>
+        <div id="dialogBody" class="dialog-body"></div>
+        <footer class="dialog-footer">
+          <button id="dialogAddBtn" type="button">В план</button>
+          <button id="dialogFavBtn" class="secondary" type="button">В избранное</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <footer class="site-footer" aria-label="Подвал сайта">
+      <div class="footer-inner">
+        <strong>ЗОЖ Кухня</strong> — практично о полезной еде. Материалы носят информационный характер и не заменяют консультацию врача.
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+  </html>
+
